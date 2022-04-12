@@ -20,11 +20,11 @@ def writeErrorPdf(cause, filename):
 
  # Write the "Empty" note in the pdf
  if cause == "empty":
-        pdf.cell(190,4, txt="EML enthaelt keinen Text", align = 'C')
+        pdf.cell(190,4, txt="EML does not contain text", align = 'C')
 
  # Write the "technical Error" note in the pdf
  if cause == "error":
-        pdf.cell(190,4, txt="Aufgrund besonderer technischer Umstaende, konnten wir in diesem konkreten Fall den Email-Text leider nicht bereitstellen.", align = 'C')
+        pdf.cell(190,4, txt="Due to special circumstances, there couldnt be created a valid Email-Text in this specific case.", align = 'C')
 
  # Write PDF
  pdf.output(filename)
@@ -119,7 +119,7 @@ def extractMailText(msg, filename):
 
                 # Print a message for html based bodies
                 if ctype == 'text/html':
-                        body.append("\n\n\n\nHINWEIS: HTML-basierte Mail - Anzeige nicht genormt\n")
+                    body.append("\n\n\n\nNOTICE: HTML-based Mail - text is not standardized\n")
 
                 # Get the body
                 if ctype == 'text/plain' or ctype == 'text/html':
@@ -160,7 +160,6 @@ def main():
  # get mail content
  with open(filename, 'rb') as file:
         msg = email.message_from_bytes(file.read())
- #msg = email.message_from_file(open(filename))
 
  # extract mail text
  body = extractMailText(msg, filename)
