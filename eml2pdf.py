@@ -1,9 +1,3 @@
-# Grabs the mail body of a given Mail
-# and writes it into a pdf file
-#
-# 20220209 RHE Initial
-######################################
-
 import os
 import argparse
 import email
@@ -51,8 +45,6 @@ def writePdfFile(text, filename):
  # insert the texts in pdf
  for line in text.split('\n'):
         pdf.multi_cell(190, 4, txt = line, align = 'L')
-        #pdf.multi_cell(19, 4, txt = line, align = 'L')
-        #pdf.cell(190, 4, txt=line, ln=1)
 
  # ignore warnings
  filterwarnings('ignore')
@@ -148,6 +140,7 @@ def extractMailText(msg, filename):
         mail = header + ["\n"] + body
         # Return body list as string
         return '\n'.join(mail)
+
 def main():
  # Add argparser
  parser = argparse.ArgumentParser()
